@@ -4,5 +4,7 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - run: false
+      - run: |
+          echo "stdout" 
+          echo "stderr" >&2
 
