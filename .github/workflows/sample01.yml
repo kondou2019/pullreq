@@ -8,6 +8,7 @@ jobs:
           echo "stdout" 
           echo "stderr" >&2
       ## こんな感じで -> v0.0.1 とか
+      - run: echo ${GITHUB_REF}
       - run: echo ${GITHUB_REF##*/}
       ## 実際に使うときは環境変数にしたりとか
       - name: tag name
