@@ -1,0 +1,11 @@
+name: result0-actions
+on:
+  push:
+    branches:
+      - main
+jobs:
+  result-0:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          exit 0
