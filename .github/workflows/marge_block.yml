@@ -1,0 +1,15 @@
+name: marge-block
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+jobs:
+  check-base-version:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.sha != github.event.before
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if base branch is outdated
+        run: |
+          echo "Base branch is outdated, refusing to merge."
+          exit 1
