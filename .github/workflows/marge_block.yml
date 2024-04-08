@@ -5,10 +5,11 @@ on:
       - main
 jobs:
   check-base-version:
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.sha != github.event.before
+    #if: github.event.pull_request.merged == true && github.event.pull_request.base.sha != github.event.before
     runs-on: ubuntu-latest
     steps:
       - name: Check if base branch is outdated
         run: |
           echo "Base branch is outdated, refusing to merge."
-          exit 1
+          git merge-base --is-ancestor main HEAD
+          #exit 1
