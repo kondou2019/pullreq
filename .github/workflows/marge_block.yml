@@ -8,11 +8,14 @@ jobs:
     #if: github.event.pull_request.merged == true && github.event.pull_request.base.sha != github.event.before
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout code(main)
         uses: actions/checkout@v2
         with:
           ref: main
-          fetch-depth: 0
+      - name: Checkout code(pr)
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - name: Check if base branch is outdated
         run: |
           echo "Base branch is outdated, refusing to merge."
