@@ -1,8 +1,8 @@
 name: marge-block
 on:
-  push:
+  pull_request:
     branches:
-      - develop/**
+      - main
 jobs:
   check-base-version:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.sha != github.event.before

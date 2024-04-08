@@ -1,0 +1,19 @@
+name: sample-self-hosted
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-bats-version-self-hosted:
+    runs-on: self-hosted
+    steps:
+      - run: |
+          echo "stdout" 
+          echo "stderr" >&2
+      ## こんな感じで -> v0.0.1 とか
+      - run: echo ${GITHUB_REF}
+      - run: echo ${GITHUB_REF##*/}
+      ## 実際に使うときは環境変数にしたりとか
+      - name: tag name
+        run: echo "TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
+      - run: echo ${{ env.TAG }}

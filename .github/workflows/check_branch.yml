@@ -1,0 +1,26 @@
+name: Check Branch
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch latest changes
+        run: git fetch origin ${{ github.event.pull_request.base.ref }}
+
+      - name: Check if branch is up to date
+        run: |
+          LOCAL=$(git rev-parse HEAD)
+          REMOTE=$(git rev-parse origin/${{ github.event.pull_request.base.ref }})
+          if [ $LOCAL != $REMOTE ]; then
+            echo "Branch is not up to date. Aborting merge."
+            exit 1
+          fi
