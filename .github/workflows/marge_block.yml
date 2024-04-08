@@ -13,4 +13,4 @@ jobs:
       - name: Check if base branch is outdated
         run: |
           echo "Base branch is outdated, refusing to merge."
-          git merge-base --is-ancestor main HEAD
+          git merge-base --is-ancestor main ${{ github.event.pull_request.head.ref }}
