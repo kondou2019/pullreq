@@ -14,4 +14,3 @@ jobs:
         run: |
           echo "Base branch is outdated, refusing to merge."
           git merge-base --is-ancestor main HEAD
-          #exit 1
