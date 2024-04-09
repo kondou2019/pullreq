@@ -1,0 +1,17 @@
+name: check-count-actions
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-count:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          find in -type f -exec grep app {} \; | wc -l
+          ret=$?
+          if [ $ret -eq 1 ]; then
+            exit 0
+          else
+            exit 1
+          fi
