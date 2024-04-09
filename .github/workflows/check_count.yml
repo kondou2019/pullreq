@@ -14,10 +14,11 @@ jobs:
       - name: Check count of app
         run: |
           git status
-          find in -type f -exec grep app {} \; | wc -l
+          line_count=$(find in -type f -exec grep app {} \; | wc -l)
           ret=$?
           echo "ret=${ret}"
-          if [ $ret -eq 1 ]; then
+          echo "line_count=${line_count}"
+          if [ $line_count -eq 1 ]; then
             exit 0
           else
             exit 1
