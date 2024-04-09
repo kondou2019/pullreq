@@ -7,7 +7,10 @@ jobs:
   check-count:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Check count of app
+        run: |
           find in -type f -exec grep app {} \; | wc -l
           ret=$?
           if [ $ret -eq 1 ]; then
