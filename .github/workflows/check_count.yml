@@ -9,8 +9,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: main
       - name: Check count of app
         run: |
+          git status
           find in -type f -exec grep app {} \; | wc -l
           ret=$?
           echo "ret=${ret}"
