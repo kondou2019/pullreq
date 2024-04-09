@@ -13,6 +13,7 @@ jobs:
         run: |
           find in -type f -exec grep app {} \; | wc -l
           ret=$?
+          echo "ret=${ret}"
           if [ $ret -eq 1 ]; then
             exit 0
           else
