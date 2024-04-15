@@ -7,6 +7,9 @@ jobs:
   check-count:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          cache: 'poetry'
       - name: Check command
         run: |
           python --version
