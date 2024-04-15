@@ -1,0 +1,14 @@
+name: poetry actions
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-count:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check command
+        run: |
+          python --version
+          python3 --version
+          poetry --version
